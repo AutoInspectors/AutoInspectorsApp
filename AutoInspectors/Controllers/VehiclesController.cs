@@ -13,7 +13,17 @@ namespace AutoInspectors.Controllers
     {
         private readonly AutoInspectorsContext _context;
         private class TransmissionType{ public string Name { get; set; } }
-        private SelectList TransTypes = new SelectList(new List<TransmissionType> { new TransmissionType { Name = "Automatic" }, new TransmissionType { Name = "Manual" } }, "Name", "Name" );
+        private SelectList TransTypes = new SelectList(
+            new List<TransmissionType> {
+                new TransmissionType { Name = ((Transmission)1).ToString() },
+                new TransmissionType { Name = ((Transmission)2).ToString() } }, 
+            "Name", "Name" );
+        // This is an enum for our transmission types
+        enum Transmission : int
+        {
+            Automatic = 1,
+            Manual = 2
+        }
 
         public VehiclesController(AutoInspectorsContext context)
         {
