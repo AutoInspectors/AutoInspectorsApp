@@ -74,7 +74,8 @@ namespace AutoInspectors.Controllers
             {
                 return NotFound();
             }
-
+            // we are inserting this manually because there seems to be a bug in core
+            inspection.Vehicle = _context.Vehicle.FirstOrDefault(x => x.VehicleID == inspection.VehicleID);
             return View(inspection);
         }
 
@@ -98,6 +99,7 @@ namespace AutoInspectors.Controllers
         {
             if (ModelState.IsValid)
             {
+               
                 _context.Add(inspection);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

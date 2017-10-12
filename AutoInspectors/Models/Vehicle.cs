@@ -45,6 +45,6 @@ namespace AutoInspectors.Models
         [Display(Name = "Transmission Type")]
         public string TransmissionType { get; set; }
 
-        List<Inspection> Inspections { get; set; }
+        public virtual ICollection<Inspection> Inspections { get; set; }
     }
 }
