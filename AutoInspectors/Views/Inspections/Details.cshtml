@@ -11,14 +11,21 @@
 <div>
     <h4>Inspection</h4>
     <hr />
-    <p>
-        @Html.DisplayFor(model => model.Vehicle.Make)&nbsp;
-        @Html.DisplayFor(model => model.Vehicle.Model)&nbsp;
-        @Html.DisplayFor(model => model.Vehicle.LicensePlate)
-        <br />
-        @Html.DisplayFor(model => model.Vehicle.Mileage)
-    </p>
     <dl class="dl-horizontal">
+        <dt>
+            Vehicle Information
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.Make)&nbsp;
+            @Html.DisplayFor(model => model.Vehicle.Model)&nbsp;
+            @Html.DisplayFor(model => model.Vehicle.LicensePlate)
+        </dd>
+        <dt>
+            Vehicle Mileage
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.Mileage)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Inspector)
         </dt>
