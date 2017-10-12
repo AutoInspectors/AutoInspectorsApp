@@ -20,7 +20,7 @@ namespace AutoInspectors.Controllers
 
         public static List<string> ReadFile()
         {
-            string inspectorData = @"data.txt";
+            string inspectorData = "wwwroot/data.txt";
 
             List<string> dataList = new List<string>();
             try
