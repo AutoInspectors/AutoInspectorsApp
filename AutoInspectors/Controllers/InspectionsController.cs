@@ -15,9 +15,8 @@ namespace AutoInspectors.Controllers
     public class InspectionsController : Controller
     {
         private readonly AutoInspectorsContext _context;
-
+        // reads the inspectors from an external file and puts them in a list
         List<string> inspectorList = ReadFile();
-
         public static List<string> ReadFile()
         {
             string inspectorData = "wwwroot/data.txt";
@@ -40,7 +39,8 @@ namespace AutoInspectors.Controllers
             }
             catch
             {
-                // need to return something here.
+                // If there's an issue reading the file it will return a list with 1 item.
+                dataList.Add("NoInspectorsExist");
                 return dataList;
             }
         }
@@ -81,9 +81,10 @@ namespace AutoInspectors.Controllers
         // GET: Inspections/Create
         public IActionResult Create()
         {
-            IQueryable < Vehicle > VehicleQuery = from v in _context.Vehicle select v;
+            // LINQ query grabs the vehicles so we can show the license plates in a drop down and set the vehicle id for the inspection
+            IQueryable<Vehicle> VehicleQuery = from v in _context.Vehicle select v;
             ViewBag.VehicleInfo = new SelectList(VehicleQuery, "VehicleID", "LicensePlate");
-
+            // put the list of inspectors in a select list for a selection drop down
             ViewBag.InspectorList = new SelectList(inspectorList);
             return View();
         }
