@@ -33,7 +33,7 @@ namespace AutoInspectors.Controllers
         // GET: Vehicles
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Vehicle.Include("Vehicle").ToListAsync());
+            return View(await _context.Vehicle.ToListAsync());
         }
 
         // GET: Vehicles/Details/5
